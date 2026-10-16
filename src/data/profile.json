@@ -1,0 +1,17 @@
+{
+  "role": "Full-stack software engineer",
+  "experience": "3+ years",
+  "focus": "building web applications for clients",
+  "intro": "I design, build and ship web products end to end, from the database to the pixels.",
+  "about": [
+    "As a full-stack engineer with 3+ years building web applications, I help clients turn rough ideas into fast, dependable products. My home base is Ruby on Rails on the back end and React on the front end, and I am comfortable owning everything in between: API design, data modeling, UI, and the AWS infrastructure it all runs on.",
+    "I love the problem-solving side of engineering. Give me a vague requirement and I will ask the right questions, sketch the simplest solution, and get a working version in front of people quickly. I care about readable code, automated tooling like RuboCop and one-command deploys, and leaving a codebase better than I found it.",
+    "I also build my own products to stay sharp. Url 2 QR turns any link into a trackable QR code, and Meal Mixtures takes the guesswork out of meal planning. Both run serverless on AWS."
+  ],
+  "facts": [
+    { "label": "Focus", "value": "Full-stack web apps" },
+    { "label": "Stack", "value": "Ruby on Rails · React · AWS" },
+    { "label": "Approach", "value": "Simple, tested, shipped" }
+  ],
+  "offline": "When I'm not writing code, you'll find me cooking 🌮, at a concert 🎶, traveling by motorcycle 🏍, or hiking in the great outdoors 🏔."
+}

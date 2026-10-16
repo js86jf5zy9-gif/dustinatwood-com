@@ -1,72 +1,72 @@
 const navbarStyle = (theme) => ({
 	appBar: {
-		zIndex: theme.zIndex.drawer + 1,
-		border: '0',
-		padding: '0.625rem 0',
-		marginBottom: '20px',
-		color: '#fff',
-		width: '100%',
-		backgroundColor: theme.palette.primary.dark,
-		boxShadow: '0 4px 18px 0px rgba(0, 0, 0, 0.12), 0 7px 10px -5px rgba(0, 0, 0, 0.15)',
-		transition: 'all 150ms ease 0s',
-		alignItems: 'center',
-		flexFlow: 'row nowrap',
-		justifyContent: 'flex-start',
-		position: 'relative',
-		opacity: '90%'
+		position: 'sticky',
+		top: 0,
+		zIndex: theme.zIndex.appBar,
+		background: 'rgba(5, 6, 15, 0.55)',
+		backdropFilter: 'saturate(160%) blur(14px)',
+		WebkitBackdropFilter: 'saturate(160%) blur(14px)',
+		borderBottom: '1px solid rgba(148, 163, 255, 0.1)'
 	},
 	container: {
-		paddingRight: '15px',
-		paddingLeft: '15px',
-		marginRight: '15px',
-		marginLeft: '15px',
-		width: '100%',
-		minHeight: '50px',
-		flex: '1',
+		maxWidth: 1080,
+		height: 68,
+		margin: '0 auto',
+		padding: '0 20px',
+		display: 'flex',
 		alignItems: 'center',
 		justifyContent: 'space-between',
-		display: 'flex',
-		flexWrap: 'nowrap'
+		color: theme.palette.text.primary
 	},
-	drawer: {
-		color: '#fff',
-		backgroundColor: theme.palette.primary.dark,
-		width: '100%',
-		minHeight: '50px',
-		flex: '1',
-		flexDirection: 'column',
-		alignItems: 'stretch',
-		justifyContent: 'center',
+	brand: {
 		display: 'flex',
-		flexWrap: 'nowrap',
-		paddingTop: '15px',
-		paddingBottom: '15px'
+		alignItems: 'center',
+		gap: '12px',
+		color: theme.palette.text.primary,
+		fontWeight: 700,
+		fontSize: '1.05rem',
+		letterSpacing: '-0.01em'
 	},
-	flex: {
-		flex: 1
+	avatar: {
+		width: 36,
+		height: 36,
+		border: `2px solid ${theme.palette.primary.main}`
+	},
+	links: {
+		display: 'flex',
+		gap: '4px'
 	},
 	link: {
-		fontFamily: [ 'Nunito Sans', 'sans-serif' ],
+		display: 'block',
+		padding: '8px 14px',
+		borderRadius: 999,
+		color: theme.palette.text.secondary,
+		fontWeight: 500,
+		fontSize: '0.95rem',
+		transition: 'color 150ms ease, background-color 150ms ease',
 		'&:hover': {
-			color: theme.palette.secondary.light
+			color: theme.palette.text.primary,
+			backgroundColor: 'rgba(124, 156, 255, 0.1)'
 		}
 	},
 	active: {
-		color: theme.palette.secondary.main
+		color: theme.palette.text.primary,
+		backgroundColor: 'rgba(124, 156, 255, 0.16)'
 	},
-	avatar: {
-		margin: theme.spacing.unit
+	drawerPaper: {
+		background: 'rgba(8, 10, 24, 0.96)'
 	},
-	menuButton: {
-		'&:focus': {
-			backgroundColor: theme.palette.primary.dark
-		}
+	drawer: {
+		display: 'flex',
+		flexDirection: 'column',
+		alignItems: 'stretch',
+		textAlign: 'center',
+		padding: '12px 16px 24px',
+		color: theme.palette.text.primary,
+		outline: 'none'
 	},
 	closeButton: {
-		width: '100%',
-		'&:focus': {
-			backgroundColor: theme.palette.primary.dark
-		}
+		alignSelf: 'flex-end'
 	}
 });
 

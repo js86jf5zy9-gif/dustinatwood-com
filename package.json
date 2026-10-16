@@ -9,7 +9,6 @@
 		"@material-ui/icons": "^1.1.0",
 		"axios": "^0.21.1",
 		"dotenv": "^8.2.0",
-		"materialize-css": "^0.100.2",
 		"react": "^16.4.0",
 		"react-dom": "^16.4.2",
 		"react-router-dom": "^4.2.2",
@@ -22,7 +21,7 @@
 		"eject": "react-scripts eject",
 		"predeploy": "del-cli build && npm run build",
 		"deploy": "npm run predeploy && npm run upload",
-		"upload": "source .env && AWS_PROFILE=$AWS_PROFILE deploy-aws-s3-cloudfront --source=./build/ --bucket $SITE --distribution $DIS --exclude .DS_Store --non-interactive --cache-control index.html:no-cache"
+		"upload": ". ./.env && AWS_PROFILE=$AWS_PROFILE deploy-aws-s3-cloudfront --source=./build/ --bucket $SITE --distribution $DIS --exclude .DS_Store --non-interactive --cache-control index.html:no-cache service-worker.js:no-cache"
 	},
 	"devDependencies": {
 		"del-cli": "^4.0.1",

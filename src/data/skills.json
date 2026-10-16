@@ -1,20 +1,30 @@
-[
-  {
-    "name": "Languages",
-    "list": [
-      "Ruby", "Javascript","CSS/SCSS", "HTML/HAML", "Java", "C#", "SQL"
-    ]
-  },
-  {
-    "name": "Frameworks",
-    "list": [
-      "Ruby on Rails", "React/Redux", "NodeJS", "ExpressJS", "Bootstrap", "MaterialUI", "JQuery"
-    ]
-  },
-  {
-    "name": "Tools",
-    "list": [
-      "Rubocop", "Git", "Chrome Dev Tools", "Postman", "VS Code", "Sketchup", "AWS"
-    ]
-  }
-]
+{
+  "highlights": [
+    {
+      "title": "Problem solving",
+      "desc": "I start with the problem, not the framework. I break requirements into small, testable pieces, find the simplest thing that works, and iterate from real feedback."
+    },
+    {
+      "title": "Full-stack coding",
+      "desc": "From Ruby on Rails APIs to React front ends, I write clean, readable code that teammates and clients can maintain long after launch."
+    },
+    {
+      "title": "Cloud & shipping",
+      "desc": "I build serverless apps on AWS and automate deploys to S3 and CloudFront, so shipping a change is a single command, not a ceremony."
+    }
+  ],
+  "groups": [
+    {
+      "name": "Languages",
+      "list": ["Ruby", "JavaScript", "CSS/SCSS", "HTML/HAML", "Java", "C#", "SQL"]
+    },
+    {
+      "name": "Frameworks",
+      "list": ["Ruby on Rails", "React/Redux", "Node.js", "Express", "Material-UI", "Bootstrap", "jQuery"]
+    },
+    {
+      "name": "Tools & Cloud",
+      "list": ["AWS (S3, CloudFront, Lambda)", "Serverless", "Git", "RuboCop", "Postman", "Chrome DevTools", "VS Code", "SketchUp"]
+    }
+  ]
+}

@@ -17,19 +17,21 @@ npm test -- -t "name"   # run a single test by name once tests exist
 npm run deploy     # clean build, then upload to S3 and invalidate CloudFront
 ```
 
-- `npm run upload` sources `.env` and needs `SITE` (S3 bucket), `DIS` (CloudFront distribution ID), and `AWS_PROFILE`. Note that `.env.sample` lists `PROFILE`, but the script reads `$AWS_PROFILE`. `index.html` is uploaded with `Cache-Control: no-cache`.
-- Both `package-lock.json` and `yarn.lock` are committed. Scripts and README use npm.
+- Copy `.env.sample` to `.env` and replace the `REPLACE_WITH_*` values. `npm run upload` sources it for `SITE` (S3 bucket), `DIS` (CloudFront distribution ID), and `AWS_PROFILE`. CRA reads the same file at build time for `REACT_APP_FORMSPREE_ID`. `index.html` and `service-worker.js` are uploaded with `Cache-Control: no-cache`.
+- Both `package-lock.json` and `yarn.lock` are committed. Scripts and README use npm, and `yarn.lock` is not kept in sync.
 - Linting runs only in CI: GitHub Super-Linter (`.github/workflows/linter.yml`) checks changed files on PRs to `main` and on pushes to other branches. There is no local lint config or script.
 
 ## Architecture
 
-- **Entry:** `src/index.js` renders `views/App.js` and registers the CRA service worker (`registerServiceWorker.js`). Because assets are served cache-first, users see deployed changes only on their next visit.
+- **Entry:** `src/index.js` renders `views/App.js` and registers the CRA service worker (`registerServiceWorker.js`). Assets are served cache-first. The worker re-checks for a new deploy when the tab regains focus and hourly, then dispatches `SW_UPDATE_EVENT`, which `components/UpdateNotice.js` turns into a "Refresh" snackbar.
+- **Background:** `components/Starfield.js` draws an animated, parallax star field on a fixed `<canvas>` behind `.app-shell`. Layers move with scroll and pointer at different rates. It pauses when the tab is hidden and renders one static frame under `prefers-reduced-motion`.
 - **Routing is data-driven:** `src/routes/index.js` exports an array of `{ path, name, component, hidden? }`. `App` maps it to `<Route exact>`s, with `NoMatch` as the fallback. The same array is passed to `Navbar` and `Footer` to build nav links, and `hidden: true` (e.g. `/thanks`) keeps a route out of the nav. To add a page, add a view in `src/views/` and an entry here.
-- **Styling:** Each view or component has a matching JSS style function in `src/styles/<name>Style.js` (`theme => ({...})`), applied with `withStyles(...)`. The global theme lives in `styles/appTheme.js`: dark grey primary and green secondary. `materialize-css` is also imported globally in `App.js`, so `src/index.css` has overrides to undo Materialize styles that clash with MUI inputs.
+- **Styling:** Each view or component has a matching JSS style function in `src/styles/<name>Style.js` (`theme => ({...})`), applied with `withStyles(...)`. The dark theme lives in `styles/appTheme.js` (periwinkle primary, teal secondary, Inter font). CSS variables, the sky layers, the `.page` container and the `.fade-up` entrance animation are in `src/index.css`. `components/GlassCard.js` is the shared translucent card. Layouts use CSS grid/flex rather than MUI `Grid`.
 - **MUI v1 APIs:** Use v1-era names such as `variant="display4"`/`"title"`/`"subheading"`, `Button variant="raised"`, `theme.spacing.unit`, `MuiThemeProvider`, `createMuiTheme`, and `Grid justify=`. Don't use v4/v5 APIs without upgrading the dependency.
 - **Content is JSON-driven:**
-  - `src/data/skills.json` populates the skills columns on Home.
+  - `src/data/profile.json` holds the bio copy, the fact list on About, and the role/experience line in the Home hero.
+  - `src/data/skills.json` has `highlights` (the "What I bring" cards) and `groups` (the skill chips) on Home.
   - `src/data/projects.json` populates Projects. Each project's image is loaded with `require.context('../images')` as `./<name>.png`, so a new project needs `src/images/<name>.png` matching its `name`. `tech` is a comma-separated string.
   - `src/routes/social.js` holds the social links used in the footer.
-- **Contact form:** `views/Contact.js` posts directly to Formspree. A hidden `_next=/thanks` field redirects to the Thanks route. There is no backend.
+- **Contact form:** `views/Contact.js` submits from the browser straight to Formspree (`https://formspree.io/f/<REACT_APP_FORMSPREE_ID>`, see `src/config.js`), then routes to the hidden `/thanks` page. There is no backend. Without the env var, submitting shows an inline "not configured" message.
 - Google Analytics (gtag) is loaded in `public/index.html`.

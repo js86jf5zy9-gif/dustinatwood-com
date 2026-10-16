@@ -1,16 +1,13 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
-import { Button } from '@material-ui/core';
-import classNames from 'classnames';
 import navbarStyle from '../styles/navbarStyle';
 
 const NavbarLink = ({ classes, path, name }) => {
-	const active = path === window.location.pathname ? classes.active : '';
 	return (
-		<Button component={Link} to={path} color="inherit" className={classNames(classes.link, classes.flex, active)}>
+		<NavLink exact to={path} className={classes.link} activeClassName={classes.active}>
 			{name}
-		</Button>
+		</NavLink>
 	);
 };
 
