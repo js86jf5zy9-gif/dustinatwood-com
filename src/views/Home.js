@@ -7,17 +7,21 @@ import homeStyle from '../styles/homeStyle';
 import skills from '../data/skills.json';
 import profile from '../data/profile.json';
 
+const { hero } = profile;
+const [ before, after ] = hero.headline.split(hero.emphasis);
+
 const Home = ({ classes }) => {
 	return (
 		<div>
 			<section className={`${classes.hero} fade-up`}>
-				<span className={classes.eyebrow}>{profile.role}</span>
+				<span className={classes.eyebrow}>{hero.eyebrow}</span>
 				<Typography variant="display4" component="h1" className={classes.heading}>
-					Hello, I'm <span className={classes.gradient}>Dustin</span>.
+					{before}
+					<span className={classes.gradient}>{hero.emphasis}</span>
+					{after}
 				</Typography>
-				<Typography variant="subheading" className={classes.lead}>
-					{profile.intro} With {profile.experience} {profile.focus}, I focus on clean code, practical
-					problem solving, and shipping work people actually use.
+				<Typography variant="subheading" component="p" className={classes.lead}>
+					{hero.body}
 				</Typography>
 				<div className={classes.actions}>
 					<Button component={Link} to="/projects" variant="raised" color="primary" size="large">
@@ -56,13 +60,25 @@ const Home = ({ classes }) => {
 							<Typography variant="title" component="h3" className={classes.cardTitle}>
 								{group.name}
 							</Typography>
-							<ul className={classes.chips}>
-								{group.list.map((skill) => (
+							<ul className={classes.chips} aria-label={`${group.name} tools`}>
+								{group.tools.map((skill) => (
 									<li key={skill} className={classes.chip}>
 										{skill}
 									</li>
 								))}
 							</ul>
+							{group.practices.length > 0 && (
+								<div>
+									<span className={classes.practicesLabel}>Practices</span>
+									<ul className={classes.chips} aria-label={`${group.name} practices`}>
+										{group.practices.map((practice) => (
+											<li key={practice} className={classes.practice}>
+												{practice}
+											</li>
+										))}
+									</ul>
+								</div>
+							)}
 						</GlassCard>
 					))}
 				</div>

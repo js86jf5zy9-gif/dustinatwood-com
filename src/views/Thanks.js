@@ -14,7 +14,7 @@ const Thanks = ({ classes }) => {
 			<Typography variant="display2" component="h1">
 				Message sent
 			</Typography>
-			<Typography variant="subheading" className={classes.muted}>
+			<Typography variant="subheading" component="p" className={classes.muted}>
 				Thanks for getting in touch! I read every message and will get back to you shortly. Have a great day.
 			</Typography>
 			<Button component={Link} to="/" variant="raised" color="primary">

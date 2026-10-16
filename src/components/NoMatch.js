@@ -8,7 +8,7 @@ const NoMatch = () => {
 			<Typography variant="display4" component="h1">
 				404
 			</Typography>
-			<Typography variant="subheading" color="textSecondary" style={{ margin: '16px 0 32px' }}>
+			<Typography variant="subheading" component="p" color="textSecondary" style={{ margin: '16px 0 32px' }}>
 				Lost in space. This page drifted out of orbit.
 			</Typography>
 			<Button component={Link} to="/" variant="raised" color="primary">

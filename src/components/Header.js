@@ -11,7 +11,7 @@ const Header = ({ classes, children, eyebrow, subtitle }) => {
 				{children}
 			</Typography>
 			{subtitle && (
-				<Typography variant="subheading" className={classes.subtitle}>
+				<Typography variant="subheading" component="p" className={classes.subtitle}>
 					{subtitle}
 				</Typography>
 			)}

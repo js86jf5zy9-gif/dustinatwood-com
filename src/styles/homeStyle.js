@@ -32,7 +32,7 @@ const homeStyle = (theme) => ({
 	},
 	lead: {
 		marginTop: theme.spacing.unit * 3,
-		maxWidth: 620,
+		maxWidth: 660,
 		color: theme.palette.text.secondary,
 		fontSize: '1.2rem'
 	},
@@ -91,6 +91,22 @@ const homeStyle = (theme) => ({
 		background: 'rgba(124, 156, 255, 0.1)',
 		border: '1px solid rgba(124, 156, 255, 0.2)',
 		color: theme.palette.text.primary,
+		fontSize: '0.85rem'
+	},
+	practicesLabel: {
+		display: 'block',
+		marginTop: theme.spacing.unit * 2.5,
+		color: theme.palette.text.secondary,
+		fontSize: '0.75rem',
+		fontWeight: 600,
+		letterSpacing: '0.12em',
+		textTransform: 'uppercase'
+	},
+	practice: {
+		padding: '6px 12px',
+		borderRadius: 999,
+		border: '1px dashed rgba(94, 234, 212, 0.35)',
+		color: theme.palette.secondary.light,
 		fontSize: '0.85rem'
 	}
 });

@@ -11,7 +11,11 @@ const aboutStyle = (theme) => ({
 	media: {
 		display: 'flex',
 		flexDirection: 'column',
-		gap: '20px'
+		gap: '20px',
+		[theme.breakpoints.down('sm')]: {
+			width: '100%',
+			maxWidth: 420
+		}
 	},
 	photo: {
 		width: '100%',

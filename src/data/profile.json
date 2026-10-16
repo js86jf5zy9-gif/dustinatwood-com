@@ -1,17 +1,25 @@
 {
-  "role": "Full-stack software engineer",
-  "experience": "3+ years",
-  "focus": "building web applications for clients",
-  "intro": "I design, build and ship web products end to end, from the database to the pixels.",
-  "about": [
-    "As a full-stack engineer with 3+ years building web applications, I help clients turn rough ideas into fast, dependable products. My home base is Ruby on Rails on the back end and React on the front end, and I am comfortable owning everything in between: API design, data modeling, UI, and the AWS infrastructure it all runs on.",
-    "I love the problem-solving side of engineering. Give me a vague requirement and I will ask the right questions, sketch the simplest solution, and get a working version in front of people quickly. I care about readable code, automated tooling like RuboCop and one-command deploys, and leaving a codebase better than I found it.",
-    "I also build my own products to stay sharp. Url 2 QR turns any link into a trackable QR code, and Meal Mixtures takes the guesswork out of meal planning. Both run serverless on AWS."
-  ],
+  "hero": {
+    "eyebrow": "Full-stack software engineer",
+    "headline": "I turn curiosity into code.",
+    "emphasis": "curiosity",
+    "body": "I’m Dustin, a software engineer who’s been building since 2004. With over a decade of Ruby on Rails experience, my work now spans full-stack development, native iOS applications, and experimental software systems. I enjoy taking ideas apart, understanding what makes them work, and putting them back together as something useful."
+  },
+  "about": {
+    "eyebrow": "About me",
+    "headline": "Engineer by experience. Builder by nature.",
+    "subtitle": "Coding has been my creative outlet since 2004.",
+    "bio": [
+      "I’ve been writing software for over two decades, with more than ten years spent building applications with Ruby on Rails. What started as curiosity grew into a career in full-stack development and a lasting fascination with how software works.",
+      "These days, my work extends beyond the web into native iOS development, game systems, and experimental software architecture. I enjoy taking an idea from its earliest concept through the underlying design, implementation, and all the small details that make the finished product feel right.",
+      "I’m a systems thinker at heart. I like exploring problems from different angles, challenging assumptions, and understanding not just how something works, but why it works that way. I believe good software should be thoughtfully designed, thoroughly tested, and flexible enough to evolve.",
+      "For me, programming is both an engineering discipline and a creative outlet. It’s how I explore ideas, solve problems, and bring things into existence that weren’t there before."
+    ],
+    "closing": "When I’m away from the keyboard, I’m usually cooking, enjoying live music, riding my motorcycle, traveling, or exploring the outdoors."
+  },
   "facts": [
-    { "label": "Focus", "value": "Full-stack web apps" },
-    { "label": "Stack", "value": "Ruby on Rails · React · AWS" },
-    { "label": "Approach", "value": "Simple, tested, shipped" }
-  ],
-  "offline": "When I'm not writing code, you'll find me cooking 🌮, at a concert 🎶, traveling by motorcycle 🏍, or hiking in the great outdoors 🏔."
+    { "label": "Background", "value": "10+ years with Ruby on Rails" },
+    { "label": "Building", "value": "Web · iOS · Software systems" },
+    { "label": "Approach", "value": "Explore deeply. Build thoughtfully." }
+  ]
 }
