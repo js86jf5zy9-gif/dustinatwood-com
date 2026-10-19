@@ -1,90 +1,88 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Typography, Grid, Fade, Paper, Divider } from '@material-ui/core';
+import { Typography, Button } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
+import GlassCard from '../components/GlassCard';
 import homeStyle from '../styles/homeStyle';
-import { List, ListItem } from '@material-ui/core'
-import dataSkills from '../data/skills.json'
+import skills from '../data/skills.json';
+import profile from '../data/profile.json';
+
+const { hero } = profile;
+const [ before, after ] = hero.headline.split(hero.emphasis);
 
 const Home = ({ classes }) => {
-	let skillChart = dataSkills.map((data) => 
-		<div key={data.name} className={classes.skillList} >
-			<div className={classes.skills}>
-				<Typography variant="title" className={classes.colored}>
-					{data.name}
-				</Typography>
-			</div>
-			<List dense={true} >
-				{
-					data.list.map((skill) => 
-						<ListItem key={skill} className={classes.skillset}>
-							<Typography variant="caption" className={classes.body}>
-								{skill}
-							</Typography>
-							{/* <ListItemText primary="Single-line item">{skill}</ListItemText> */}
-						</ListItem>
-					)
-				}
-			</List>
-		</div>
-	)
-
 	return (
 		<div>
-			<Grid container spacing={24}>
-				<Grid item xs={12}>
-					<Typography className={classes.heading} variant="display4">
-						Hello, I'm Dustin
-					</Typography>
-				</Grid>
+			<section className={`${classes.hero} fade-up`}>
+				<span className={classes.eyebrow}>{hero.eyebrow}</span>
+				<Typography variant="display4" component="h1" className={classes.heading}>
+					{before}
+					<span className={classes.gradient}>{hero.emphasis}</span>
+					{after}
+				</Typography>
+				<Typography variant="subheading" component="p" className={classes.lead}>
+					{hero.body}
+				</Typography>
+				<div className={classes.actions}>
+					<Button component={Link} to="/projects" variant="raised" color="primary" size="large">
+						View projects
+					</Button>
+					<Button component={Link} to="/contact" variant="outlined" size="large" className={classes.ghost}>
+						Get in touch
+					</Button>
+				</div>
+			</section>
 
-				<Grid item xs={12}>
-					<Fade in timeout={2000}>
-						<Typography variant="subheading" className={classes.body}>
-							I’m a software engineer with a focus on delivering high
-							quality web solutions. Check out my latest 
-							<Link to="/projects" className={classes.link}> Projects</Link>. 
-							Feel free to 
-							<Link to="/contact" className={classes.link}> reach out </Link> or email
-							about new opportunities.
-						</Typography>
-					</Fade>
-				</Grid>
-				<Grid item xs={12} className={classes.largeGap}>
-					<Divider />
-				</Grid>
-				<Grid item xs={12}>
-					<Divider />
-					<div className={classes.skills}>
-						<Fade in timeout={3000}>
-							<Typography variant="subheading" className={classes.body}>
-								Skills
+			<section className={classes.section}>
+				<Typography variant="display1" component="h2" className={classes.sectionTitle}>
+					What I bring
+				</Typography>
+				<div className={classes.highlights}>
+					{skills.highlights.map((item, i) => (
+						<GlassCard key={item.title} className="fade-up" style={{ animationDelay: `${0.15 * i}s` }}>
+							<span className={classes.index}>0{i + 1}</span>
+							<Typography variant="title" component="h3" className={classes.cardTitle}>
+								{item.title}
 							</Typography>
-							</Fade>
-					</div>
-				</Grid>
-				<Grid item xs={12} className={classes.smallGap}>
-					<Divider />
-				</Grid>
-				<Grid item xs={12} >
-					<Fade in timeout={4000}>
-						<Paper className={classes.papers}>
-							<div className={classes.skillset}>
-								{ skillChart }
-							</div>
-						</Paper>
-					</Fade>
-					
-					<div className={classes.skills}>
-						<Fade in timeout={10000}>
-							<Typography variant="caption" className={classes.body}>
-								and more...
+							<Typography className={classes.muted}>{item.desc}</Typography>
+						</GlassCard>
+					))}
+				</div>
+			</section>
+
+			<section className={classes.section}>
+				<Typography variant="display1" component="h2" className={classes.sectionTitle}>
+					Skills & tools
+				</Typography>
+				<div className={classes.skillGroups}>
+					{skills.groups.map((group) => (
+						<GlassCard key={group.name}>
+							<Typography variant="title" component="h3" className={classes.cardTitle}>
+								{group.name}
 							</Typography>
-						</Fade>
-					</div>
-					
-				</Grid>
-			</Grid>
+							<ul className={classes.chips} aria-label={`${group.name} tools`}>
+								{group.tools.map((skill) => (
+									<li key={skill} className={classes.chip}>
+										{skill}
+									</li>
+								))}
+							</ul>
+							{group.practices.length > 0 && (
+								<div>
+									<span className={classes.practicesLabel}>Practices</span>
+									<ul className={classes.chips} aria-label={`${group.name} practices`}>
+										{group.practices.map((practice) => (
+											<li key={practice} className={classes.practice}>
+												{practice}
+											</li>
+										))}
+									</ul>
+								</div>
+							)}
+						</GlassCard>
+					))}
+				</div>
+			</section>
 		</div>
 	);
 };

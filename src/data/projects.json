@@ -1,16 +1,98 @@
-[
-  {
-    "name": "mealmixtures",
-    "label": "Meal Mixtures",
-    "desc": "simple web app solution for meal planning",
-    "tech": "materialui,javascript,react,aws,serverless",
-    "link": "https://api.url2qr.com/recipes"
+{
+  "intro": {
+    "eyebrow": "Selected work",
+    "headline": "Ideas, experiments, and things I’ve built.",
+    "body": "Some projects begin with a practical problem. Others start with a question I can’t stop thinking about. My work spans full-stack applications, native iOS experiences, and experimental software systems — each an opportunity to explore, learn, and build something meaningful."
   },
-  {
-    "name": "url2qr",
-    "label": "Url 2 QR",
-    "desc": "easy convert an url to a QR with  analytics",
-    "tech": "materialui,javascript,react,aws,serverless",
-    "link": "https://url2qr.com/"
-  }
-]
+  "beyond": {
+    "title": "Beyond the day job",
+    "lead": "Some of my favorite projects start with a simple question: What if software could do this differently?",
+    "body": "That curiosity leads me to experiment with new architectures, game systems, and unconventional ideas. It’s where I challenge assumptions, explore possibilities, and bring what I learn back into the software I build every day."
+  },
+  "categories": [
+    {
+      "key": "applications",
+      "title": "Applications",
+      "desc": "Practical, user-facing software, including released apps."
+    },
+    {
+      "key": "experiments",
+      "title": "Systems & Experiments",
+      "desc": "Engines, game systems, and exploratory engineering."
+    },
+    {
+      "key": "ongoing",
+      "title": "Ongoing Work",
+      "desc": "Private projects that are still evolving."
+    }
+  ],
+  "projects": [
+    {
+      "name": "risenmind",
+      "label": "RisenMind",
+      "category": "applications",
+      "featured": true,
+      "kind": "Native iOS app",
+      "status": "Released",
+      "statusTone": "released",
+      "desc": "A native iOS app that makes daily motivation a simple, personal ritual. Built with a focus on privacy and simplicity, RisenMind delivers encouraging messages, focused categories, and gentle reminders — with everything stored on your device, and no accounts, tracking, or unnecessary distractions.",
+      "tech": "Swift,SwiftUI,Native iOS Development,Notifications,Product Design",
+      "image": "risenmind.jpg",
+      "imageAlt": "RisenMind’s “Today’s Choice” daily card showing a motivational quote in the Authenticity category",
+      "imageFit": "device",
+      "link": "https://risenmind.app",
+      "linkLabel": "Explore RisenMind",
+      "secondaryLink": "https://apps.apple.com/us/app/risenmind/id6751671042",
+      "secondaryLinkLabel": "View on App Store"
+    },
+    {
+      "name": "url2qr",
+      "label": "Url 2 QR",
+      "category": "applications",
+      "kind": "Web application",
+      "status": "Live",
+      "statusTone": "live",
+      "desc": "A practical web application that transforms URLs into trackable QR codes, connecting everyday utility with straightforward analytics.",
+      "tech": "React,JavaScript,Material-UI,AWS,Serverless",
+      "image": "url2qr.jpg",
+      "imageAlt": "Url 2 QR home screen with a URL field and a generated QR code over an image of Earth at night",
+      "link": "https://url2qr.com/",
+      "linkLabel": "Visit Url 2 QR"
+    },
+    {
+      "name": "mealmixtures",
+      "label": "Meal Mixtures",
+      "category": "applications",
+      "kind": "Web & iOS application",
+      "status": "Live",
+      "statusTone": "live",
+      "note": "iOS app in development",
+      "desc": "A meal-planning application designed to take the guesswork out of deciding what to cook. Built as a web application with a native iOS experience in development, Meal Mixtures focuses on making recipes and everyday meal planning simpler.",
+      "tech": "React,JavaScript,Material-UI,AWS,Serverless",
+      "image": "mealmixtures.jpg",
+      "imageAlt": "Meal Mixtures recipe page for banana bread with description, ingredient checklist, and step-by-step directions",
+      "link": "https://mealmixtures.com",
+      "linkLabel": "Visit Meal Mixtures"
+    },
+    {
+      "name": "mathemathical",
+      "label": "Mathemathical",
+      "category": "experiments",
+      "kind": "Native iOS game",
+      "status": "In active development",
+      "statusTone": "development",
+      "desc": "A native iOS mathematics game that blends strategy, discovery, and thoughtful interaction. Built around a custom, testable game engine, Mathemathical explores how deterministic rules and carefully designed systems can create engaging gameplay.",
+      "tech": "Swift,SwiftUI,Game Design,State Management,Testing"
+    },
+    {
+      "name": "private-projects",
+      "label": "Private projects",
+      "category": "ongoing",
+      "kind": "Ongoing work",
+      "status": "Private · in progress",
+      "statusTone": "private",
+      "desc": "Some of my most interesting ideas are still taking shape. I’m exploring new approaches to software architecture, simulation, and game systems through several private projects. They’re not quite ready to share yet, but they’re where much of my curiosity leads.",
+      "tech": "Software Architecture,Simulation,Game Systems,Experimental Development"
+    }
+  ]
+}

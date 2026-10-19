@@ -1,16 +1,20 @@
 import React from 'react';
 import { Typography } from '@material-ui/core';
-import Dash from '../components/Dash';
 import { withStyles } from '@material-ui/core/styles';
 import headerStyle from '../styles/headerStyle';
 
-const Header = ({ classes, children }) => {
+const Header = ({ classes, children, eyebrow, subtitle }) => {
 	return (
-		<div>
-			<Typography variant="display2" className={classes.heading}>
+		<div className={`${classes.header} fade-up`}>
+			{eyebrow && <span className={classes.eyebrow}>{eyebrow}</span>}
+			<Typography variant="display2" component="h1" className={classes.heading}>
 				{children}
 			</Typography>
-			<Dash />
+			{subtitle && (
+				<Typography variant="subheading" component="p" className={classes.subtitle}>
+					{subtitle}
+				</Typography>
+			)}
 		</div>
 	);
 };

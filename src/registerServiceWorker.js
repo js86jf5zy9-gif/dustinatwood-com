@@ -1,12 +1,24 @@
 // In production, we register a service worker to serve assets from local cache.
 
 // This lets the app load faster on subsequent visits in production, and gives
-// it offline capabilities. However, it also means that developers (and users)
-// will only see deployed updates on the "N+1" visit to a page, since previously
-// cached resources are updated in the background.
+// it offline capabilities. Cached assets are refreshed in the background, so on
+// its own a new deploy would only appear on the "N+1" visit to a page.
+//
+// To close that gap without giving up cache-first speed, we:
+//   1. Ask the browser to re-check service-worker.js whenever the tab becomes
+//      visible again and once an hour while it stays open.
+//   2. Dispatch an `SW_UPDATE_EVENT` on window once a new version has been
+//      precached. <UpdateNotice /> listens for it and offers a one-click
+//      refresh. (sw-precache uses skipWaiting, so a reload is all it takes.)
+//
+// service-worker.js and index.html must be uploaded with no-cache (see the
+// `upload` script) or browsers and CloudFront may keep serving a stale worker.
 
 // To learn more about the benefits of this model, read https://goo.gl/KwvDNy.
 // This link also includes instructions on opting out of this behavior.
+
+export const SW_UPDATE_EVENT = 'sw-update-available';
+const UPDATE_CHECK_INTERVAL = 60 * 60 * 1000;
 
 const isLocalhost = Boolean(
   window.location.hostname === 'localhost' ||
@@ -56,6 +68,7 @@ function registerValidSW(swUrl) {
   navigator.serviceWorker
     .register(swUrl)
     .then(registration => {
+      watchForUpdates(registration);
       registration.onupdatefound = () => {
         const installingWorker = registration.installing;
         installingWorker.onstatechange = () => {
@@ -66,6 +79,7 @@ function registerValidSW(swUrl) {
               // It's the perfect time to display a "New content is
               // available; please refresh." message in your web app.
               console.log('New content is available; please refresh.');
+              window.dispatchEvent(new Event(SW_UPDATE_EVENT));
             } else {
               // At this point, everything has been precached.
               // It's the perfect time to display a
@@ -79,6 +93,18 @@ function registerValidSW(swUrl) {
     .catch(error => {
       console.error('Error during service worker registration:', error);
     });
+}
+
+function watchForUpdates(registration) {
+  const checkForUpdate = () => {
+    registration.update().catch(() => {
+      // Offline or the request failed; we'll try again on the next check.
+    });
+  };
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) checkForUpdate();
+  });
+  setInterval(checkForUpdate, UPDATE_CHECK_INTERVAL);
 }
 
 function checkValidServiceWorker(swUrl) {

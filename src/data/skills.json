@@ -1,20 +1,33 @@
-[
-  {
-    "name": "Languages",
-    "list": [
-      "Ruby", "Javascript","CSS/SCSS", "HTML/HAML", "Java", "C#", "SQL"
-    ]
-  },
-  {
-    "name": "Frameworks",
-    "list": [
-      "Ruby on Rails", "React/Redux", "NodeJS", "ExpressJS", "Bootstrap", "MaterialUI", "JQuery"
-    ]
-  },
-  {
-    "name": "Tools",
-    "list": [
-      "Rubocop", "Git", "Chrome Dev Tools", "Postman", "VS Code", "Sketchup", "AWS"
-    ]
-  }
-]
+{
+  "highlights": [
+    {
+      "title": "Systems thinking",
+      "desc": "I look beyond individual features to understand how the pieces fit together. From data models to application architecture, I enjoy designing systems that are understandable, adaptable, and built to last."
+    },
+    {
+      "title": "End-to-end development",
+      "desc": "With over a decade of Rails experience and growing expertise in native iOS development, I’m comfortable working across the stack. I enjoy everything from backend architecture and APIs to the interactions that make an application feel right."
+    },
+    {
+      "title": "Thoughtful execution",
+      "desc": "Good ideas deserve careful implementation. I value clear requirements, maintainable code, meaningful tests, and continuous refinement. My goal is always to build something that works well today without making tomorrow harder."
+    }
+  ],
+  "groups": [
+    {
+      "name": "Web Development",
+      "tools": ["Ruby on Rails", "Ruby", "JavaScript", "React", "Node.js", "SQL", "HTML / CSS", "Material-UI"],
+      "practices": []
+    },
+    {
+      "name": "iOS Development",
+      "tools": ["Swift", "SwiftUI", "Swift Testing"],
+      "practices": ["Native iOS Development", "Application Architecture", "Game Logic"]
+    },
+    {
+      "name": "Systems & Infrastructure",
+      "tools": ["AWS", "AWS Lambda", "S3", "CloudFront", "Serverless", "Git"],
+      "practices": ["REST APIs", "Software Architecture"]
+    }
+  ]
+}
